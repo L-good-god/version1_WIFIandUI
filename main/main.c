@@ -10,17 +10,18 @@
 #include "bsp/esp-bsp.h"
 #include "bsp/display.h"
 #include "lv_demos.h"
+#include "ui/generated/gui_guider.h"
+
+lv_ui guider_ui;
 
 void app_main(void)
 {
-
     bsp_display_start();
 
     bsp_display_lock(0);
 
-    // lv_demo_music();
-   // lv_demo_benchmark();
-     lv_demo_widgets();
-
+    // 初始化UI
+    setup_ui(&guider_ui);
+    
     bsp_display_unlock();
 }
