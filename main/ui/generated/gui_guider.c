@@ -102,5 +102,3 @@ void init_keyboard(lv_ui *ui)
 {
 
 }
-
-
