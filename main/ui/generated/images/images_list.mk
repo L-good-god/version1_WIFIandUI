@@ -1,0 +1,1 @@
+GEN_CSRCS += _fengmian_RGB565A8_480x480.c _biao_RGB565A8_134x141.c

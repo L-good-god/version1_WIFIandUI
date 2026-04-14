@@ -1,0 +1,75 @@
+# Espressif ESP32S3 Project
+
+# Build directory
+build/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# CMake files
+CMakeCache.txt
+CMakeFiles/
+
+# ESP-IDF specific files
+*.bin
+*.elf
+*.map
+*.o
+*.a
+*.so
+
+# Configuration files
+sdkconfig
+*.orig*
+
+# Python virtual environment
+venv/
+env/
+
+# Temporary files
+*.log
+*.tmp
+*.temp
+
+# Clangd cache
+.cache/
+
+# Test output
+pytest_output/
+
+# Coverage files
+coverage/
+*.lcov
+
+# Documentation build
+ docs/_build/
+
+# Local development
+local/
+
+# Third-party libraries
+components/
+
+# ESP-IDF components
+esp-idf/
+
+# Toolchain files
+toolchain/
+
+# Flash related files
+flash_args
+
+# Debug files
+.gdb_history
+
+# Package manager files
+node_modules/
+package-lock.json
