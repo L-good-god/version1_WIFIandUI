@@ -11,8 +11,16 @@
 #include "bsp/display.h"
 #include "lv_demos.h"
 #include "ui/generated/gui_guider.h"
+#include "WIFI/wifi.h"
 
 lv_ui guider_ui;
+
+// WiFi初始化任务
+void wifi_init_task(void *pvParameters)
+{
+    wifi_init();
+    vTaskDelete(NULL);
+}
 
 void app_main(void)
 {
@@ -24,4 +32,7 @@ void app_main(void)
     setup_ui(&guider_ui);
     
     bsp_display_unlock();
+    
+    // 创建WiFi初始化任务
+    xTaskCreate(wifi_init_task, "wifi_init_task", 4096, NULL, 5, NULL);
 }

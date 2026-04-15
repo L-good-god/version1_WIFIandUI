@@ -10,9 +10,13 @@ file(GLOB_RECURSE UI_SOURCES
     ${UI_DIR}/generated/images/*.c
 )
 
+# 添加WiFi模块文件
+set(WIFI_DIR ${CMAKE_CURRENT_SOURCE_DIR}/WIFI)
+file(GLOB_RECURSE WIFI_SOURCES ${WIFI_DIR}/*.c)
+
 idf_component_register(
-    SRCS main.c ${LV_DEMOS_SOURCES} ${UI_SOURCES}
-    INCLUDE_DIRS . ${LV_DEMO_DIR} ${UI_DIR} ${UI_DIR}/custom ${UI_DIR}/generated)
+    SRCS main.c ${LV_DEMOS_SOURCES} ${UI_SOURCES} ${WIFI_SOURCES}
+    INCLUDE_DIRS . ${LV_DEMO_DIR} ${UI_DIR} ${UI_DIR}/custom ${UI_DIR}/generated ${WIFI_DIR})
 
 idf_component_get_property(LVGL_LIB lvgl__lvgl COMPONENT_LIB)
 target_compile_options(
