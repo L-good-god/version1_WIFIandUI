@@ -9,7 +9,6 @@
 #include "lvgl.h"
 #include "bsp/esp-bsp.h"
 #include "bsp/display.h"
-#include "lv_demos.h"
 #include "ui/generated/gui_guider.h"
 #include "WIFI/wifi.h"
 
