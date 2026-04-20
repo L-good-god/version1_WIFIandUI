@@ -1,20 +1,19 @@
 #include "stdio.h"
 #include "mqtt_client.h"
 #include "esp_log.h"
-#include "freertos/FreeRTOS.h"      // FreeRTOS核心功能
-#include "freertos/task.h"          // 任务管理
-#include "freertos/event_groups.h"  // 事件组（用于任务间同步）
-#include "esp_event.h"              // 事件循环
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+#include "freertos/event_groups.h"
+#include "esp_event.h"
 #include "freertos/semphr.h"
-#include "rec.h"
 
 #define MQTT_ADDRESS  "mqtt://broker.emqx.io"
-#define MQTT_CLIENTID "mqttx_7e0c8373"
+#define MQTT_CLIENTID "mqttx_202604201038"
 #define MQTT_USERNAME "lgod"
 #define MQTT_PASSWORD "88888888"
 
-#define MQTT_TOPIC1 "/topic/esp32_0823"               //mqttx往这个主题推送消息
-#define MQTT_TOPIC2 "/topic/mqttx_0823"               //ESP32往这个主题推送消息
+#define MQTT_TOPIC1 "/topic/esp32_0823"               //esp32往这个主题推送消息
+#define MQTT_TOPIC2 "/topic/mqttx_0823"               //mqttx往这个主题推送消息
 
 #define TAG      "mqtt"
 
@@ -44,11 +43,9 @@ void mqtt_event_callback(void *event_handler_args,esp_event_base_t event_base, i
                 break;
 
             case MQTT_EVENT_DATA:
-                ESP_LOGI(TAG, "MQTT data arrived");
-                ESP_LOGI(TAG, "TOPIC->%s",data->topic);
-                ESP_LOGI(TAG, "DATA LENGTH->%d", data->data_len);
-                receive(data->data);
-                break;
+                ESP_LOGI(TAG,"topic->%s",data->topic);
+                ESP_LOGI(TAG,"payload->%.*s", data->data_len, data->data);
+        break;
 
             default:
                 break;
@@ -70,9 +67,9 @@ void mqtt_start(void){
     mqtt_cfg.broker.address.uri = MQTT_ADDRESS;
     mqtt_cfg.broker.address.port = 1883;
     mqtt_cfg.credentials.client_id = MQTT_CLIENTID;
-    mqtt_cfg.credentials.username = MQTT_USERNAME;
-    mqtt_cfg.credentials.authentication.password = MQTT_PASSWORD;
-    mqtt_cfg.buffer.size = 4096;
+        // mqtt_cfg.credentials.username = MQTT_USERNAME;
+        // mqtt_cfg.credentials.authentication.password = MQTT_PASSWORD;
+
     mqtt_handle = esp_mqtt_client_init(&mqtt_cfg);
 
     esp_mqtt_client_register_event(mqtt_handle,ESP_EVENT_ANY_ID,mqtt_event_callback,NULL);

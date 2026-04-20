@@ -11,9 +11,13 @@ file(GLOB_RECURSE UI_SOURCES
 set(WIFI_DIR ${CMAKE_CURRENT_SOURCE_DIR}/WIFI)
 file(GLOB_RECURSE WIFI_SOURCES ${WIFI_DIR}/*.c)
 
+# 添加MQTT模块文件
+set(MQTT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/MQTT)
+file(GLOB_RECURSE MQTT_SOURCES ${MQTT_DIR}/*.c)
+
 idf_component_register(
-    SRCS main.c ${UI_SOURCES} ${WIFI_SOURCES}
-    INCLUDE_DIRS . ${UI_DIR} ${UI_DIR}/custom ${UI_DIR}/generated ${WIFI_DIR})
+    SRCS main.c ${UI_SOURCES} ${WIFI_SOURCES} ${MQTT_SOURCES}
+    INCLUDE_DIRS . ${UI_DIR} ${UI_DIR}/custom ${UI_DIR}/generated ${WIFI_DIR} ${MQTT_DIR})
 
 idf_component_get_property(LVGL_LIB lvgl__lvgl COMPONENT_LIB)
 target_compile_options(
