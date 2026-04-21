@@ -8,12 +8,13 @@
 #include "freertos/semphr.h"
 
 #define MQTT_ADDRESS  "mqtt://broker.emqx.io"
+#define MQTT_PORT       1883
 #define MQTT_CLIENTID "mqttx_202604201038"
 #define MQTT_USERNAME "lgod"
 #define MQTT_PASSWORD "88888888"
 
-#define MQTT_TOPIC1 "/topic/esp32_0823"               //esp32往这个主题推送消息
-#define MQTT_TOPIC2 "/topic/mqttx_0823"               //mqttx往这个主题推送消息
+#define MQTT_TOPIC1 "/topic/esp32_0420"               //esp32往这个主题推送消息
+#define MQTT_TOPIC2 "/topic/mqttx_0420"               //mqttx往这个主题推送消息
 
 #define TAG      "mqtt"
 
@@ -65,7 +66,7 @@ void mqtt_start(void){
 
     esp_mqtt_client_config_t mqtt_cfg = {0};
     mqtt_cfg.broker.address.uri = MQTT_ADDRESS;
-    mqtt_cfg.broker.address.port = 1883;
+    mqtt_cfg.broker.address.port = MQTT_PORT;
     mqtt_cfg.credentials.client_id = MQTT_CLIENTID;
         // mqtt_cfg.credentials.username = MQTT_USERNAME;
         // mqtt_cfg.credentials.authentication.password = MQTT_PASSWORD;

@@ -13,8 +13,8 @@ extern SemaphoreHandle_t mqtt_mutex;
 
 void mqtt_start(void);
 
-#define MQTT_TOPIC1 "/topic/esp32_0823"               //esp32往这个主题推送消息
-#define MQTT_TOPIC2 "/topic/mqttx_0823"               //mqttx往这个主题推送消息
+#define MQTT_TOPIC1 "/topic/esp32_0420"               //esp32往这个主题推送消息
+#define MQTT_TOPIC2 "/topic/mqttx_0420"               //mqttx往这个主题推送消息
 #ifdef __cplusplus
 }
 #endif
